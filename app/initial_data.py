@@ -15,7 +15,7 @@ def init() -> None:
 
 def main() -> None:
     logger.info("Creating initial data")
-    init()
+    # init()
     logger.info("Initial data created")
 
 

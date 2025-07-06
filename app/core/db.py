@@ -4,8 +4,18 @@ from app import crud
 from app.core.config import settings
 from app.models import User, UserCreate
 
-engine = create_engine(str(settings.SQLALCHEMY_DATABASE_URI))
+# engine = create_engine(str(settings.SQLALCHEMY_DATABASE_URI))
+engine = None
+if settings.SQLALCHEMY_DATABASE_URI:
+    engine = create_engine(str(settings.SQLALCHEMY_DATABASE_URI))
+else:
+    print("⚠️ Skipping DB engine init due to missing SQLALCHEMY_DATABASE_URI")
 
+def init_db(session: Session):
+    if engine is None:
+        print("⚠️ Skipping init_db because engine is None")
+        return
+    # tiếp tục logic nếu cần
 
 # make sure all SQLModel models are imported (app.models) before initializing DB
 # otherwise, SQLModel might fail to initialize relationships properly

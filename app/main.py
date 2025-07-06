@@ -1,4 +1,5 @@
 import sentry_sdk
+import uvicorn
 from fastapi import FastAPI
 from fastapi.routing import APIRoute
 from starlette.middleware.cors import CORSMiddleware
@@ -31,3 +32,13 @@ if settings.all_cors_origins:
     )
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "app.main:app",  # hoặc "__main__:app" nếu file này là entrypoint
+        host="0.0.0.0",
+        port=8000,
+        reload=False  # chỉ dùng reload=True khi đang phát triển
+    )
