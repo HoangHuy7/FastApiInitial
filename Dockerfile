@@ -1,43 +1,22 @@
-FROM python:3.10
+FROM python:3.12-slim
 
-ENV PYTHONUNBUFFERED=1
+# Cài đặt các công cụ cần thiết
+RUN apt-get update && apt-get install -y curl build-essential && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app/
+# Cài uv từ PyPI
+RUN pip install uv
 
-# Install uv
-# Ref: https://docs.astral.sh/uv/guides/integration/docker/#installing-uv
-COPY --from=ghcr.io/astral-sh/uv:0.5.11 /uv /uvx /bin/
+# Tạo thư mục app
+WORKDIR /app
 
-# Place executables in the environment at the front of the path
-# Ref: https://docs.astral.sh/uv/guides/integration/docker/#using-the-environment
-ENV PATH="/app/.venv/bin:$PATH"
+# Copy toàn bộ project
+COPY . /app
 
-# Compile bytecode
-# Ref: https://docs.astral.sh/uv/guides/integration/docker/#compiling-bytecode
-ENV UV_COMPILE_BYTECODE=1
+# Cài dependencies từ pyproject.toml
+RUN uv pip install --system .
 
-# uv Cache
-# Ref: https://docs.astral.sh/uv/guides/integration/docker/#caching
-ENV UV_LINK_MODE=copy
+# Mở cổng
+EXPOSE 8000
 
-# Install dependencies
-# Ref: https://docs.astral.sh/uv/guides/integration/docker/#intermediate-layers
-RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project
-
-ENV PYTHONPATH=/app
-
-COPY ./scripts /app/scripts
-
-COPY ./pyproject.toml ./uv.lock ./alembic.ini /app/
-
-COPY ./app /app/app
-
-# Sync the project
-# Ref: https://docs.astral.sh/uv/guides/integration/docker/#intermediate-layers
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync
-
-CMD ["fastapi", "run", "--workers", "4", "app/main.py"]
+# Chạy app
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
