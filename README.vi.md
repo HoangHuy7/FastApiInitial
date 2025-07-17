@@ -17,6 +17,46 @@ Chào mừng bạn đến với dự án FastAPI mới! Dự án này được t
 *   **Containerization**: Bao gồm `Dockerfile` để dễ dàng đóng gói và triển khai ứng dụng.
 *   **Công cụ Hỗ trợ**: Được cấu hình sẵn với `ruff` để linting và `mypy` để kiểm tra kiểu tĩnh.
 
+## 🌳 Cấu trúc thư mục
+
+<pre>
+.
+├── app/
+│   ├── __init__.py
+│   ├── crud.py
+│   ├── main.py
+│   ├── models.py
+│   ├── utils.py
+│   ├── api/
+│   │   ├── __init__.py
+│   │   ├── deps.py
+│   │   ├── main.py
+│   │   └── routes/
+│   │       ├── __init__.py
+│   │       ├── users.py
+│   │       └── utils.py
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── db.py
+│   │   └── security.py
+│   └── email-templates/
+│       └── src/
+│           ├── new_account.mjml
+│           ├── reset_password.mjml
+│           └── test_email.mjml
+├── .dockerignore
+├── .env.example
+├── .gitignore
+├── Dockerfile
+├── poetry.lock
+├── pyproject.toml
+├── README.md
+├── README.vi.md
+├── test_main.http
+└── uv.lock
+</pre>
+
 ## 🚀 Công nghệ sử dụng
 
 *   **Backend**: FastAPI, Uvicorn

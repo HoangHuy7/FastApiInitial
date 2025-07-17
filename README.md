@@ -17,6 +17,46 @@ Welcome to your new FastAPI project! This project is designed to be a robust sta
 *   **Containerization**: Includes a `Dockerfile` for easy containerization and deployment.
 *   **Tooling**: Pre-configured with `ruff` for linting and `mypy` for static type checking.
 
+## 🌳 Project Structure
+
+<pre>
+.
+├── app/
+│   ├── __init__.py
+│   ├── crud.py
+│   ├── main.py
+│   ├── models.py
+│   ├── utils.py
+│   ├── api/
+│   │   ├── __init__.py
+│   │   ├── deps.py
+│   │   ├── main.py
+│   │   └── routes/
+│   │       ├── __init__.py
+│   │       ├── users.py
+│   │       └── utils.py
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── db.py
+│   │   └── security.py
+│   └── email-templates/
+│       └── src/
+│           ├── new_account.mjml
+│           ├── reset_password.mjml
+│           └── test_email.mjml
+├── .dockerignore
+├── .env.example
+├── .gitignore
+├── Dockerfile
+├── poetry.lock
+├── pyproject.toml
+├── README.md
+├── README.vi.md
+├── test_main.http
+└── uv.lock
+</pre>
+
 ## 🚀 Tech Stack
 
 *   **Backend**: FastAPI, Uvicorn
