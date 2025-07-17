@@ -39,7 +39,7 @@ Chào mừng bạn đến với dự án FastAPI mới! Dự án này được t
 
 1.  **Clone repository:**
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/HoangHuy7/FastApiInitial.git
     cd FastAPIInitial
     ```
 
@@ -70,6 +70,16 @@ Chào mừng bạn đến với dự án FastAPI mới! Dự án này được t
     docker build -t my-fastapi-app .
     docker run -d -p 8000:8000 --env-file .env my-fastapi-app
     ```
+
+### Build Docker Image
+
+Bạn cũng có thể build Docker image một cách riêng biệt bằng lệnh sau:
+
+```bash
+docker build -t fastapi-initial .
+```
+
+Lệnh này sẽ tạo ra một Docker image có tên `fastapi-initial` dựa trên `Dockerfile` được cung cấp. Sau đó, bạn có thể chạy image này bằng lệnh `docker run` như trong phần "Production (Docker)".
 
 ## Xem trước API
 

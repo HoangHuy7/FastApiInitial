@@ -39,7 +39,7 @@ Welcome to your new FastAPI project! This project is designed to be a robust sta
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/HoangHuy7/FastApiInitial.git
     cd FastAPIInitial
     ```
 
@@ -70,6 +70,16 @@ Welcome to your new FastAPI project! This project is designed to be a robust sta
     docker build -t my-fastapi-app .
     docker run -d -p 8000:8000 --env-file .env my-fastapi-app
     ```
+
+### Build Docker Image
+
+You can also build the Docker image separately using the following command:
+
+```bash
+docker build -t fastapi-initial .
+```
+
+This will create a Docker image named `fastapi-initial` based on the provided `Dockerfile`. You can then run this image using the `docker run` command as shown in the "Production (Docker)" section.
 
 ## API Preview
 
