@@ -49,10 +49,23 @@ Welcome to your new FastAPI project! This project is designed to be a robust sta
     cp .env.example .env
     ```
 
-3.  **Install dependencies:**
-    Using `uv`, you can install all the required dependencies with a single command:
+### 3. Create a virtual environment and install dependencies:
+    It is highly recommended to use a virtual environment to manage project dependencies.
+
+    First, create the virtual environment:
     ```bash
-    uv pip install --system .
+    python3 -m venv .venv
+    ```
+
+    Next, activate it:
+    ```bash
+    source .venv/bin/activate
+    ```
+    *(On Windows, use `.venv\Scripts\activate`)*
+
+    Finally, install the dependencies using `uv`:
+    ```bash
+    uv pip install .
     ```
 
 ### 3. Running the Application

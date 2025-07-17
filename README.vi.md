@@ -49,10 +49,23 @@ Chào mừng bạn đến với dự án FastAPI mới! Dự án này được t
     cp .env.example .env
     ```
 
-3.  **Cài đặt các gói phụ thuộc:**
-    Sử dụng `uv`, bạn có thể cài đặt tất cả các gói phụ thuộc cần thiết bằng một lệnh duy nhất:
+### 3. Tạo môi trường ảo và cài đặt các gói phụ thuộc:
+    Chúng tôi khuyến khích bạn sử dụng môi trường ảo để quản lý các gói phụ thuộc của dự án.
+
+    Đầu tiên, tạo môi trường ảo:
     ```bash
-    uv pip install --system .
+    python3 -m venv .venv
+    ```
+
+    Tiếp theo, kích hoạt nó:
+    ```bash
+    source .venv/bin/activate
+    ```
+    *(Trên Windows, sử dụng `.venv\Scripts\activate`)*
+
+    Cuối cùng, cài đặt các gói phụ thuộc bằng `uv`:
+    ```bash
+    uv pip install .
     ```
 
 ### 3. Chạy Ứng dụng
